@@ -11,11 +11,11 @@ fn main() {
     let args: Vec<String> = env::args().collect();
     // |err| is a closure (anonymous function)
     let config: Config = Config::build(&args).unwrap_or_else(|err| {
-        println!("{err}");
+        eprintln!("{err}");
         process::exit(1);
     });
     if let Err(e) = minigrep::run(config) {
-        println!("{e}");
+        eprintln!("{e}");
         process::exit(1);
     }
 }
